@@ -20,6 +20,13 @@ const UserProvider = ({ children }) => {
 }
 
 // 3. create the hook
+function useUser() {
+  const context = useContext(UserContext)
+  if (context === undefined) {
+    throw new Error('useUser must be used within a UserProvider')
+  }
+  return context
+}
 
-// three steps to use context:
-// also export provider and hook
+// export provider and hook
+export { UserProvider, useUser }
